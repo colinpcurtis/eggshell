@@ -1,11 +1,11 @@
 CC=gcc
-CFLAGS=
+CFLAGS=-Wall -Wextra
 EXEC=shell
-OBJ=main.o
+OBJ=main.o shell.o
 
 .phony: clean
 
-%.o: %.c
+%.o: %.c %.h
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 $(EXEC): $(OBJ)
