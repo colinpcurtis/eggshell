@@ -3,7 +3,7 @@ CFLAGS=-Wall -Wextra
 EXEC=shell
 OBJ=main.o shell.o
 
-.phony: clean
+.PHONY: clean
 
 %.o: %.c %.h
 	$(CC) $(CFLAGS) -o $@ -c $<

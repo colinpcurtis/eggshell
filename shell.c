@@ -21,6 +21,7 @@ void execute(char** argv, pid_t* prev_status) {
         // TODO: cd with no args should just take us to the home directory
         pid_t status = chdir(argv[1]);
         *prev_status = status;
+        return;
     }
     else if (strcmp(*argv, "echo") == 0 && argv[1] != NULL && strcmp(argv[1], "$?") == 0) {
         // handle return codes for previous command
