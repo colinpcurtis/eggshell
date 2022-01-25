@@ -4,6 +4,19 @@
 
 #include "shell.h"
 
+void split_input(char* line, char** split_line) {
+    char* to_check[] = {";", "&&", "||"};
+    char* token = strtok(line, ";");
+    int splits = 0;
+    while (token != NULL) {
+        token[strcspn(token, "\n")] = 0;
+        split_line[splits] = token;
+        token = strtok(NULL, ";");
+        splits++;
+    }
+    split_line[splits] = NULL;
+}
+
 void parse(char* line, char** argv) {
     char* token = strtok(line, " ");
     int argc = 0;
