@@ -5,7 +5,6 @@
 #include "shell.h"
 
 void split_input(char* line, char** split_line) {
-    char* to_check[] = {";", "&&", "||"};
     char* token = strtok(line, ";");
     int splits = 0;
     while (token != NULL) {
@@ -18,6 +17,7 @@ void split_input(char* line, char** split_line) {
 }
 
 void parse(char* line, char** argv) {
+    // split input by space characters and append parameters to argv
     char* token = strtok(line, " ");
     int argc = 0;
     while (token != NULL) {

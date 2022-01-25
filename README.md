@@ -16,5 +16,8 @@ and finally run the `make` command to build the program.
 To run the shell, run `./shell` and when you're done either `CTRL-C` or `exit`.
 
 ## Features
-- we can run almost any normal shell command except for fancy stuff like subshells
+- we can run almost any normal shell command (ls, cd)
+- we display the username and current directory on the prompt
+- multiple execution (separate multiple commands to be run by ';')
+- 
 - when the previous command has a non-zero exit status the prompt is red

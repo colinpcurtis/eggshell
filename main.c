@@ -7,10 +7,12 @@
 
 int main() {
     char line[MAX_LENGTH];
-    char* argv[MAX_ARGS];
-    char* split_line[MAX_ARGS];
     char cwd[MAX_LENGTH];
     char username[MAX_LENGTH];
+
+    char* split_line[MAX_ARGS];
+    char* argv[MAX_ARGS];
+
     pid_t prev_status = 0;
 
     system("clear");
@@ -25,7 +27,6 @@ int main() {
         printf("%s", RESET);
         fflush(stdout);
 
-        
         fgets(line, MAX_LENGTH, stdin);
 
         if (strcmp(line, "exit\n") == 0) {
