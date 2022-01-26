@@ -1,7 +1,7 @@
 CC=gcc
-CFLAGS=-Wall -Wextra
-EXEC=shell
-OBJ=main.o shell.o
+CFLAGS=-Wall -Wextra -std=c17
+EXEC=eggshell
+OBJ=main.o parser.o execute.o
 
 .PHONY: clean
 
