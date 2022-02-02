@@ -1,8 +1,9 @@
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
+#include "globals.h"
 #include "parser.h"
-
 
 void split_input(char* line, char** split_line) {
     char* token = strtok(line, ";");
@@ -21,9 +22,17 @@ void parse(char* line, char** argv) {
     char* token = strtok(line, " ");
     int argc = 0;
     while (token != NULL) {
-        token[strcspn(token, "\n")] = 0; // remove any newline characters from string (usually at last position)
-        argv[argc] = token;
-        argc++;
+        if (strcmp(token, "&&") == 0 || strcmp(token, "||") == 0) {
+            printf("%s\n", token);
+        }
+        else {
+            token[strcspn(token, "\n")] = 0; // remove any newline characters from string (usually at last position)
+            argv[argc] = token;
+            argc++;
+        }
+        // token[strcspn(token, "\n")] = 0; // remove any newline characters from string (usually at last position)
+        // argv[argc] = token;
+        // argc++;
         token = strtok(NULL, " ");
     }
     argv[argc] = NULL; // final item must be null terminated

@@ -22,3 +22,4 @@ Some things that will be added to eggshell in the near future are
 - redirection of stdin and stdout
 - pipes
 - subshells
+- history

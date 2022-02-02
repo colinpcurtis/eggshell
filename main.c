@@ -7,11 +7,21 @@
 #include "parser.h"
 #include "execute.h"
 
-int main() {
-    char line[MAX_STRING_LENGTH];
+void print_prompt() {
     char cwd[MAX_STRING_LENGTH];
     char username[MAX_STRING_LENGTH];
 
+    char* current_directory = getcwd(cwd, MAX_STRING_LENGTH);
+    getlogin_r(username, MAX_STRING_LENGTH);
+
+    
+    printf("%s:%s$ ", username, current_directory);
+    printf("%s", RESET);
+    fflush(stdout);
+}
+
+int main() {
+    char line[MAX_STRING_LENGTH];
     char* split_line[MAX_ARGS];
     char* argv[MAX_ARGS];
 
@@ -19,21 +29,12 @@ int main() {
 
     system("clear");
     while (1) {
-        char* current_directory = getcwd(cwd, MAX_STRING_LENGTH);
-        getlogin_r(username, MAX_STRING_LENGTH);
-
         if (prev_status != 0) {
             printf("%s", RED);
         }
-        printf("%s:%s$ ", username, current_directory);
-        printf("%s", RESET);
-        fflush(stdout);
+        print_prompt();
 
         fgets(line, MAX_STRING_LENGTH, stdin);
-
-        if (strcmp(line, "exit\n") == 0) {
-            exit(1);
-        }
 
         split_input(line, split_line);
         for (int i = 0; split_line[i] != NULL; i++) {
